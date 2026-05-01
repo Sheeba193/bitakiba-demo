@@ -1,0 +1,10 @@
+{
+  "name": "BitAkiba",
+  "short_name": "BitAkiba",
+  "description": "Mobile-first savings and wallet PWA for African traders.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#003D9B",
+  "icons": []
+}

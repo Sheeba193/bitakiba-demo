@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>BitAkiba Demo</title>
+  <meta name="theme-color" content="#003D9B">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+  <main id="landing" class="page active">
+    <nav class="nav">
+      <a class="brand" href="#landing" data-page="landing"><span class="brand-mark">₿</span><span>BitAkiba</span></a>
+      <div class="nav-actions">
+        <button class="btn btn-ghost" data-auth="login">Log in</button>
+        <button class="btn btn-primary" data-auth="signup">Get started</button>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Demo wallet + email authentication</span>
+        <h1>Save automatically every time you get paid.</h1>
+        <p>Use the complete BitAkiba demo to sign in with email, connect a wallet, view demo balances, and test savings flows.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-large" data-auth="signup">Create demo account</button>
+          <button class="btn btn-ghost btn-large" data-page="demo">Preview dashboard</button>
+        </div>
+      </div>
+      <div class="phone-card">
+        <div class="phone-top"><span>Demo Balance</span><strong id="hero-email">guest@bitakiba.demo</strong></div>
+        <div class="balance">KES 24,500</div>
+        <div class="mini-grid">
+          <div><span>Savings</span><strong>KES 6,850</strong></div>
+          <div><span>Wallet</span><strong>Not connected</strong></div>
+        </div>
+        <button class="btn btn-primary" data-auth="signup">Start demo</button>
+      </div>
+    </section>
+
+    <section class="landing-section">
+      <div class="section-head center">
+        <h3>How it works</h3>
+        <p>Receive, split, and save without needing to understand Bitcoin or Lightning.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card"><span>1</span><h4>Receive payment</h4><p>Create a QR code or payment link for your customer.</p></article>
+        <article class="feature-card"><span>2</span><h4>Save automatically</h4><p>BitAkiba moves up to 10% into your savings vault.</p></article>
+        <article class="feature-card"><span>3</span><h4>Withdraw later</h4><p>Your locked savings stay protected until the unlock date.</p></article>
+      </div>
+    </section>
+
+    <section class="landing-section">
+      <div class="section-head center">
+        <h3>Built for everyday earners</h3>
+        <p>Lower fees, automatic savings, and better financial discipline in one mobile-first flow.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card"><h4>Lower fees</h4><p>Lightning-backed rails are hidden behind a simple payment experience.</p></article>
+        <article class="feature-card"><h4>Automatic savings</h4><p>Every successful payment can split money into savings instantly.</p></article>
+        <article class="feature-card"><h4>Financial discipline</h4><p>Lock periods help traders avoid spending savings too early.</p></article>
+      </div>
+    </section>
+
+    <section class="landing-section faq-section">
+      <div>
+        <h3>FAQ</h3>
+        <details open><summary>Do I need a wallet?</summary><p>You can start with a connected provider such as LNbits, Breez, WalletConnect, Browser Wallet, or M-Pesa Bridge.</p></details>
+        <details><summary>How does saving work?</summary><p>BitAkiba saves a portion of each payment automatically. Free users are capped at 10%.</p></details>
+      </div>
+      <div class="terms-card">
+        <h3>Terms and conditions</h3>
+        <p>This MVP is a local simulation. Real payment, wallet, and withdrawal actions must be verified by backend providers before production use.</p>
+        <button class="btn btn-primary" data-auth="signup">Get Started</button>
+      </div>
+    </section>
+  </main>
+
+  <main id="auth" class="page auth-page">
+    <section class="auth-card">
+      <button class="back-link" data-page="landing">← Back</button>
+      <div class="auth-heading">
+        <span class="brand-mark">₿</span>
+        <h2 id="auth-title">Create your demo account</h2>
+        <p>Email authentication is simulated locally for the demo.</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" id="signup-tab" data-mode="signup">Sign up</button>
+        <button class="tab" id="login-tab" data-mode="login">Log in</button>
+      </div>
+
+      <form id="auth-form" class="form">
+        <label id="name-field">Full name
+          <input id="name" type="text" autocomplete="name" placeholder="Amara Wangari">
+        </label>
+        <label>Email address
+          <input id="email" type="email" autocomplete="email" placeholder="amara@bitakiba.demo" required>
+        </label>
+        <label>Password
+          <input id="password" type="password" autocomplete="current-password" placeholder="Use any 6+ characters" minlength="6" required>
+        </label>
+        <label id="language-field">Preferred language
+          <select id="language">
+            <option value="en">English</option>
+            <option value="sw">Swahili</option>
+            <option value="fr">French</option>
+            <option value="zu">Zulu</option>
+          </select>
+        </label>
+        <label id="user-type-field">User type
+          <select id="user-type">
+            <option value="trader">Trader</option>
+            <option value="freelancer">Freelancer</option>
+            <option value="seller">Seller</option>
+          </select>
+        </label>
+        <button class="btn btn-primary btn-full" type="submit" id="auth-submit">Create account</button>
+      </form>
+
+      <div class="demo-login">
+        <p>Quick demo users</p>
+        <button class="chip" data-demo-user="amara">Amara</button>
+        <button class="chip" data-demo-user="juma">Juma</button>
+        <button class="chip" data-demo-user="aisha">Aisha</button>
+      </div>
+    </section>
+  </main>
+
+  <main id="demo" class="page app-page">
+    <aside class="sidebar">
+      <a class="brand" href="#landing" data-page="landing"><span class="brand-mark">₿</span><span>BitAkiba</span></a>
+      <button class="side-link active" data-screen="overview">Overview</button>
+      <button class="side-link" data-screen="receive">Receive</button>
+      <button class="side-link" data-screen="savings-vault">Savings</button>
+      <button class="side-link" data-screen="wallets">Connect Wallet</button>
+      <button class="side-link" data-screen="transactions">Transactions</button>
+      <button class="side-link" data-screen="language-settings">Language</button>
+      <button class="side-link" data-screen="premium">Premium</button>
+      <button class="side-link" data-screen="profile">Profile</button>
+      <button class="side-link danger" id="logout-btn">Log out</button>
+    </aside>
+
+    <section class="dashboard">
+      <header class="topbar">
+        <div>
+          <span class="muted">Signed in as</span>
+          <h2 id="user-name">Guest User</h2>
+          <p id="user-email">guest@bitakiba.demo</p>
+        </div>
+        <button class="btn btn-primary" data-screen="wallets" id="wallet-cta">Connect wallet</button>
+      </header>
+
+      <section id="overview" class="screen active">
+        <div class="cards">
+          <article class="stat-card gradient"><span>Available balance</span><strong id="balance">KES 0</strong><small id="btc-balance">≈ 0 BTC</small></article>
+          <article class="stat-card"><span>Savings vault</span><strong id="savings">KES 0</strong><small>Auto-saving 10%</small></article>
+          <article class="stat-card"><span>Connected wallet</span><strong id="wallet-summary">None</strong><small id="wallet-address">Connect to complete setup</small></article>
+        </div>
+        <div class="setup-card">
+          <div>
+            <h3>Setup checklist</h3>
+            <p>Complete email authentication and connect a wallet to unlock the full demo.</p>
+          </div>
+          <ul class="checklist">
+            <li id="check-email">Email authenticated</li>
+            <li id="check-wallet">Wallet connected</li>
+            <li id="check-savings">Savings demo data loaded</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="receive" class="screen">
+        <div class="section-head">
+          <h3>Receive payment</h3>
+          <p>Create a demo QR/link and simulate a successful customer payment.</p>
+        </div>
+        <div class="split-grid">
+          <form id="receive-form" class="tool-card form">
+            <label>Amount
+              <input id="payment-amount" type="number" min="1" value="5000">
+            </label>
+            <label>Description
+              <input id="payment-description" type="text" value="Customer order">
+            </label>
+            <label>Auto-save percentage
+              <input id="saving-rate" type="number" min="0" max="10" value="10">
+            </label>
+            <button class="btn btn-primary btn-full" type="submit">Generate QR and link</button>
+          </form>
+          <div class="tool-card receive-preview">
+            <div class="qr-box" id="qr-box">QR</div>
+            <p id="payment-link">Payment link will appear here.</p>
+            <button class="btn btn-ghost btn-full" id="simulate-payment">Simulate payment received</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="savings-vault" class="screen">
+        <div class="section-head">
+          <h3>Savings vault</h3>
+          <p>Savings are separated from spending balance and protected by a lock period.</p>
+        </div>
+        <div class="split-grid">
+          <article class="tool-card">
+            <span class="muted">Locked savings</span>
+            <h2 id="vault-balance">KES 0</h2>
+            <p id="unlock-copy">Unlock date unavailable.</p>
+          </article>
+          <form id="withdraw-form" class="tool-card form">
+            <label>Withdraw amount
+              <input id="withdraw-amount" type="number" min="1" value="1000">
+            </label>
+            <button class="btn btn-primary btn-full" type="submit">Withdraw savings</button>
+            <p class="muted">Early withdrawal is blocked unless premium emergency mode is active.</p>
+          </form>
+        </div>
+      </section>
+
+      <section id="wallets" class="screen">
+        <div class="section-head">
+          <h3>Connect wallet</h3>
+          <p>Choose a demo wallet or connect an injected browser wallet if installed.</p>
+        </div>
+        <div class="wallet-grid" id="wallet-grid"></div>
+        <div class="connected-panel hidden" id="connected-panel">
+          <h3>Wallet setup complete</h3>
+          <p id="connected-copy"></p>
+          <button class="btn btn-ghost" id="disconnect-wallet">Disconnect wallet</button>
+        </div>
+      </section>
+
+      <section id="transactions" class="screen">
+        <div class="section-head">
+          <h3>Demo transactions</h3>
+          <p>These transactions are seeded after email authentication.</p>
+        </div>
+        <div class="tx-list" id="tx-list"></div>
+      </section>
+
+      <section id="language-settings" class="screen">
+        <div class="section-head">
+          <h3>Language settings</h3>
+          <p>Switch between English, Swahili, French, and Zulu demo labels.</p>
+        </div>
+        <div class="tool-card form">
+          <label>App language
+            <select id="settings-language">
+              <option value="en">English</option>
+              <option value="sw">Swahili</option>
+              <option value="fr">French</option>
+              <option value="zu">Zulu</option>
+            </select>
+          </label>
+          <button class="btn btn-primary" id="save-language">Save language</button>
+          <p id="language-preview" class="muted">Receive money. Save automatically.</p>
+        </div>
+      </section>
+
+      <section id="premium" class="screen">
+        <div class="section-head">
+          <h3>Upgrade to premium</h3>
+          <p>Unlock flexible savings, emergency withdrawals, goals, analytics, and notifications.</p>
+        </div>
+        <div class="premium-card">
+          <h2>KES 299 / month</h2>
+          <ul class="checklist">
+            <li>Flexible savings percentage</li>
+            <li>Emergency withdrawal mode</li>
+            <li>Savings goals</li>
+            <li>Analytics dashboard</li>
+            <li>Notifications</li>
+          </ul>
+          <button class="btn btn-primary btn-full" id="upgrade-premium">Upgrade demo account</button>
+        </div>
+      </section>
+
+      <section id="profile" class="screen">
+        <div class="profile-card">
+          <div class="avatar" id="avatar">GU</div>
+          <h3 id="profile-name">Guest User</h3>
+          <p id="profile-email">guest@bitakiba.demo</p>
+          <span class="verified">Verified demo account</span>
+          <div class="profile-meta">
+            <p id="profile-language">Language: English</p>
+            <p id="profile-type">Type: Trader</p>
+            <p id="profile-premium">Plan: Free</p>
+            <p id="offline-status">Online · offline cache ready</p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div class="setup-modal hidden" id="wallet-setup-modal" role="dialog" aria-modal="true" aria-labelledby="setup-wallet-name">
+    <div class="setup-dialog">
+      <button class="modal-close" id="setup-close" aria-label="Close setup">×</button>
+      <div class="setup-header">
+        <div class="wallet-icon large" id="setup-wallet-icon">⚡</div>
+        <div>
+          <span class="muted">Guided wallet setup</span>
+          <h2 id="setup-wallet-name">Wallet</h2>
+          <p id="setup-wallet-type">Demo provider</p>
+        </div>
+      </div>
+      <div class="stepper" id="setup-stepper"></div>
+      <div class="setup-body" id="setup-body"></div>
+      <div class="setup-actions">
+        <button class="btn btn-ghost" id="setup-back">Back</button>
+        <button class="btn btn-primary" id="setup-next">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/demo-data.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
